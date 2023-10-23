@@ -6,6 +6,7 @@ export default function About() {
     <>
       <h1>About page</h1>
       <Link to="/">Home page</Link>
+      <Link to="/PersonalLinks">Personal links</Link>
       <p>Albert Poniedziałek</p>
     </>
   );

@@ -6,6 +6,7 @@ export default function Home() {
     <>
       <h1>Home page</h1>
       <Link to="/about">About</Link>
+      <Link to="/PersonalLinks">Personal links</Link>
       <p>Page is still under development</p>
     </>
   );
