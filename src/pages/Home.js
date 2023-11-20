@@ -8,7 +8,7 @@ export default function Home() {
       <div className="main">
         <Link to="/about">About</Link>
         <Link to="/PersonalLinks">Personal links</Link>
-        <p>Page is still under development</p>
+        <p>Page is under development</p>
       </div>
     </>
   );
