@@ -1,16 +1,15 @@
 $text-color: rgb(255, 255, 255);
 $shadow-color: rgb(94, 35, 161);
-$shadow-size: 2px;
+$shadow-size: 1.5px;
 
 @function shadow() {
 }
 
 .App-header {
-  background-color: #282c34;
+  // background-color: #282c34;
   background-image: url("images/583269.jpg");
   min-height: 100vh;
   height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -18,13 +17,26 @@ $shadow-size: 2px;
 }
 
 h1 {
-  justify-content: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 10px;
+  justify-content: left;
   color: $text-color;
   text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
     $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
 }
 
 .main {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 10px;
+
   color: $text-color;
   background-color: none;
   display: flex;

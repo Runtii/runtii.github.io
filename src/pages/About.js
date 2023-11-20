@@ -5,9 +5,11 @@ export default function About() {
   return (
     <>
       <h1>About page</h1>
-      <Link to="/">Home page</Link>
-      <Link to="/PersonalLinks">Personal links</Link>
-      <p>Albert Poniedziałek</p>
+      <div className="main">
+        <Link to="/">Home page</Link>
+        <Link to="/PersonalLinks">Personal links</Link>
+        <p>Albert Poniedziałek</p>
+      </div>
     </>
   );
 }
