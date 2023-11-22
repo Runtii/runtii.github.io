@@ -14,39 +14,43 @@ $shadow-size: 1.5px;
   align-items: center;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
+  color: $text-color;
 }
 
-h1 {
+#title {
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-  border-radius: 10px;
-  justify-content: left;
-  color: $text-color;
-  text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
-    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
 }
 
-.main {
-  padding: 20px;
+.glass_background {
+  padding: 10px;
+  margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
   border-radius: 10px;
-
   color: $text-color;
-  background-color: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  gap: 20px;
+
   text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
     $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
 }
 
+#head {
+  height: 30px;
+}
+
+#main {
+  height: 50px;
+}
+
+$link-shadow-color: white;
 a {
-  color: $text-color;
-  text-decoration: underline none;
+  color: rgb(128, 44, 206);
+  text-shadow: (-$shadow-size) 0 $link-shadow-color,
+    0 $shadow-size $link-shadow-color, $shadow-size 0 $link-shadow-color,
+    0 (-$shadow-size) $link-shadow-color;
+  text-decoration: none;
 }
