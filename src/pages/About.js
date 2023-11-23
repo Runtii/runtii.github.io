@@ -1,25 +1,31 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-let credentials = "Albert Poniedziałek";
-
 // const RandomMove = (id)=>{
 //   el = document.getElementById(id)
 
 // }
 
+const returnLink = (path, pathName) => {
+  return <Link to={"/" + path}>{pathName}</Link>;
+};
+
 export default function About() {
+  let credentials = "Albert Poniedziałek";
+  let title = "About";
+  let paths = ["", "Projects", "PersonalLinks", "Contact"];
+  let pathNames = ["Home", paths[1], "Personal Links", paths[3]];
+
   return (
     <>
       <h1 className="glass_background" id="title">
-        About
+        {title}
       </h1>
-      <links className="glass_background" id="head">
-        <Link to="/">Home</Link>
-        <Link to="/Projects">Projects</Link>
-        <Link to="/PersonalLinks">Personal links</Link>
-        <Link to="/Contact">Contact</Link>
-      </links>
+      <div className="glass_background" id="head">
+        {paths.map((val, key) => {
+          return returnLink(val, pathNames[key]);
+        })}
+      </div>
       <main className="glass_background" id="main">
         <p>{credentials}</p>
       </main>
