@@ -2,9 +2,6 @@ $text-color: rgb(255, 255, 255);
 $shadow-color: rgb(94, 35, 161);
 $shadow-size: 1.5px;
 
-@function shadow() {
-}
-
 .App-header {
   // background-color: #282c34;
   background-image: url("images/583269.jpg");
@@ -14,11 +11,6 @@ $shadow-size: 1.5px;
   align-items: center;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
-  color: $text-color;
-}
-
-#title {
-  padding: 20px;
 }
 
 .glass_background {
@@ -38,16 +30,26 @@ $shadow-size: 1.5px;
     $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
 }
 
+#title {
+  padding: 20px;
+  width: 30%;
+  justify-content: center;
+}
+
 #head {
   height: 30px;
+  width: 40%;
+  justify-content: center;
 }
 
 #main {
   height: 50px;
+  width: 30%;
+  justify-content: center;
 }
 
-$link-shadow-color: white;
 a {
+  $link-shadow-color: white;
   color: rgb(128, 44, 206);
   text-shadow: (-$shadow-size) 0 $link-shadow-color,
     0 $shadow-size $link-shadow-color, $shadow-size 0 $link-shadow-color,
