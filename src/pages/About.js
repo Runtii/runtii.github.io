@@ -18,13 +18,15 @@ export default function About() {
 
   return (
     <>
-      <h1 className="glass_background" id="title">
-        {title}
-      </h1>
-      <div className="glass_background" id="head">
-        {paths.map((val, key) => {
-          return returnLink(val, pathNames[key]);
-        })}
+      <div className="title">
+        <h1 className="glass_background" id="title">
+          {title}
+        </h1>
+        <head className="glass_background" id="head">
+          {paths.map((val, key) => {
+            return returnLink(val, pathNames[key]);
+          })}
+        </head>
       </div>
       <main className="glass_background" id="main">
         <p>{credentials}</p>

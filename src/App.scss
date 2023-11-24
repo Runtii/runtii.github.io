@@ -14,8 +14,7 @@ $shadow-size: 1.5px;
 }
 
 .glass_background {
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 15px;
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(1px);
@@ -24,33 +23,48 @@ $shadow-size: 1.5px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 100px;
 
   text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
     $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
 }
 
+.title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+  padding-bottom: 50px;
+}
+
 #title {
-  padding: 20px;
-  width: 30%;
-  justify-content: center;
+  margin: 20px 0px 0px 20px;
+  width: auto;
+  justify-content: left;
 }
 
 #head {
   height: 30px;
-  width: 40%;
-  justify-content: center;
+  width: auto;
+  justify-content: right;
+  margin: 25px 0px 0px 20px;
+  position: fixed;
+  top: 0;
+  right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 #main {
   height: 50px;
   width: 30%;
   justify-content: center;
+  font-size: calc(12px + 2vmin);
 }
 
 a {
   $link-shadow-color: white;
-  color: rgb(128, 44, 206);
+  color: rgb(145, 74, 212);
   text-shadow: (-$shadow-size) 0 $link-shadow-color,
     0 $shadow-size $link-shadow-color, $shadow-size 0 $link-shadow-color,
     0 (-$shadow-size) $link-shadow-color;
