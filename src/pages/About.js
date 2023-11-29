@@ -5,6 +5,22 @@ const returnLink = (path, pathName) => {
   return <Link to={"/" + path}>{pathName}</Link>;
 };
 
+const move = () => {
+  let collection = document.getElementsByClassName("glass_background");
+  console.log(collection);
+  for (let i in collection) {
+    if (i < collection.length) {
+      console.log(collection[i]);
+      collection[i].style.top =
+        parseFloat(collection[i].style.top || 0) + 5 + "px";
+      collection[i].style.left =
+        parseFloat(collection[i].style.left || 0) + 5 + "px";
+      collection[i].style.rotate =
+        parseFloat(collection[i].style.rotate || 0) + 0.1 + "deg";
+    }
+  }
+};
+
 export default function About({ paths, pathNames, pageNumber }) {
   return (
     <>
@@ -36,6 +52,7 @@ export default function About({ paths, pathNames, pageNumber }) {
           I do my best to make my projects good looking... but we all know that
           it is difficult and not always goes to plan.
         </p>
+        <input type="button" onClick={() => move()}></input>
       </main>
     </>
   );
