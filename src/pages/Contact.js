@@ -5,19 +5,17 @@ const returnLink = (path, pathName) => {
   return <Link to={"/" + path}>{pathName}</Link>;
 };
 
-export default function Contact() {
-  let title = "Contact";
-  let paths = ["", "About", "Projects", "PersonalLinks"];
-  let pathNames = ["Home", paths[1], paths[2], "Personal links"];
+export default function Contact({ paths, pathNames, pageNumber }) {
   return (
     <>
       <div className="title">
         <h1 className="glass_background" id="title">
-          {title}
+          {pathNames[pageNumber]}
         </h1>
         <head className="glass_background" id="head">
           {paths.map((val, key) => {
-            return returnLink(val, pathNames[key]);
+            if (key !== pageNumber) return returnLink(val, pathNames[key]);
+            else return "";
           })}
         </head>
       </div>
