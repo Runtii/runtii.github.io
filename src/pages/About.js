@@ -6,8 +6,6 @@ const returnLink = (path, pathName) => {
 };
 
 export default function About({ paths, pathNames, pageNumber }) {
-  let credentials = "Albert Poniedziałek";
-
   return (
     <>
       <div className="title">
@@ -21,8 +19,23 @@ export default function About({ paths, pathNames, pageNumber }) {
           })}
         </head>
       </div>
-      <main className="glass_background" id="main">
-        <p>{credentials}</p>
+      <main id="main">
+        <p className="glass_background" id="first">
+          Hi! I'm Albert Poniedziałek, it would be Albert Monday in english if
+          translated. Yes i know that many people don't like mondays,
+          nonetheless i hope that we will get along.
+        </p>
+        <p className="glass_background">
+          I'm a aspiring front-end developer, but someone after seeing my
+          projects might even say full-stack developer. Mainly due to creating
+          both client and server apps (with data base connected of course) for
+          my projects and I have to admit I really enjoy connecting both via
+          requests.
+        </p>
+        <p className="glass_background" id="last">
+          I do my best to make my projects good looking... but we all know that
+          it is difficult and not always goes to plan.
+        </p>
       </main>
     </>
   );

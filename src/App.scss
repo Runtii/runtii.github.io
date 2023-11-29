@@ -1,5 +1,5 @@
 $text-color: rgb(255, 255, 255);
-$shadow-color: rgb(94, 35, 161);
+$shadow-color: rgb(92, 21, 173);
 $shadow-size: 1.5px;
 
 .App-header {
@@ -15,12 +15,11 @@ $shadow-size: 1.5px;
 
 .glass_background {
   padding: 15px;
-  background: rgb(0, 132, 157);
   background: linear-gradient(
     135deg,
-    rgba(0, 113, 136, 0.15) 0%,
-    rgba(0, 174, 177, 0.15) 50%,
-    rgba(0, 213, 255, 0.15) 100%
+    rgba(0, 52, 63, 0.15) 0%,
+    rgba(0, 107, 109, 0.15) 50%,
+    rgba(0, 115, 138, 0.15) 100%
   );
   box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(1px);
@@ -44,9 +43,12 @@ $shadow-size: 1.5px;
 }
 
 #title {
-  margin: 20px 0px 0px 20px;
+  margin: 0px 0px 0px 20px;
   width: auto;
   justify-content: left;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #head {
@@ -68,6 +70,14 @@ $shadow-size: 1.5px;
   align-items: center;
   flex-direction: column;
   gap: 20px;
+}
+
+p#first {
+  margin: 20px 0 0 0;
+}
+
+p#last {
+  margin: 0 0 20px 0;
 }
 
 p {
