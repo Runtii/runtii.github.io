@@ -2,7 +2,6 @@ import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import PersonalLinks from "./pages/Personal links";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
@@ -15,8 +14,8 @@ import Contact from "./pages/Contact";
  */
 
 function App() {
-  let paths = ["", "About", "Projects", "PersonalLinks", "Contact"];
-  let pathNames = ["Home", paths[1], paths[2], "Personal links", paths[4]];
+  let paths = ["", "About", "Projects", "Contact"];
+  let pathNames = ["Home", paths[1], paths[2], paths[3]];
   return (
     <div className="App">
       <header className="App-header">
@@ -40,19 +39,9 @@ function App() {
             }
           />
           <Route
-            path="/PersonalLinks"
-            element={
-              <PersonalLinks
-                paths={paths}
-                pathNames={pathNames}
-                pageNumber={3}
-              />
-            }
-          />
-          <Route
             path="/Contact"
             element={
-              <Contact paths={paths} pathNames={pathNames} pageNumber={4} />
+              <Contact paths={paths} pathNames={pathNames} pageNumber={3} />
             }
           />
         </Routes>

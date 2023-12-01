@@ -2,7 +2,11 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 const returnLink = (path, pathName) => {
-  return <Link to={"/" + path}>{pathName}</Link>;
+  return (
+    <Link to={"/" + path} className="links">
+      {pathName}
+    </Link>
+  );
 };
 
 export default function Contact({ paths, pathNames, pageNumber }) {

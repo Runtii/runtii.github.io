@@ -2,7 +2,11 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 const returnLink = (path, pathName) => {
-  return <Link to={"/" + path}>{pathName}</Link>;
+  return (
+    <Link to={"/" + path} className="links">
+      {pathName}
+    </Link>
+  );
 };
 
 export default function Projects({ paths, pathNames, pageNumber }) {
@@ -20,8 +24,23 @@ export default function Projects({ paths, pathNames, pageNumber }) {
         </head>
       </div>
 
-      <main className="glass_background" id="main">
-        <p>My projects</p>
+      <main id="main">
+        <h2 className="glass_background content" id="first">
+          My projects
+        </h2>
+
+        <div className="glass_background content">
+          <h4>Notes wallet</h4>
+          <p></p>
+        </div>
+        <div className="glass_background content">
+          <h4>Password wallet</h4>
+          <p></p>
+        </div>
+        <div className="glass_background content" id="last">
+          <h4>IS APP</h4>
+          <p></p>
+        </div>
       </main>
     </>
   );

@@ -2,7 +2,11 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 const returnLink = (path, pathName) => {
-  return <Link to={"/" + path}>{pathName}</Link>;
+  return (
+    <Link to={"/" + path} className="links">
+      {pathName}
+    </Link>
+  );
 };
 
 const move = () => {
@@ -38,7 +42,7 @@ export default function About({ paths, pathNames, pageNumber }) {
       <main id="main">
         <p className="glass_background" id="first">
           Hi! I'm Albert Poniedziałek, it would be Albert Monday in english if
-          translated. Yes i know that many people don't like mondays,
+          translated. Yes i know that a lot of people don't like Mondays,
           nonetheless i hope that we will get along.
         </p>
         <p className="glass_background">
