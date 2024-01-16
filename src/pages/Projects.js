@@ -14,18 +14,21 @@ export default function Projects({ paths, pathNames, pageNumber }) {
     <>
       <div className="title">
         <h1 className="glass_background" id="title">
-          {pathNames[pageNumber]}
+          <a id="hideLink" href="/">
+            {pathNames[pageNumber]}
+          </a>
         </h1>
         <h4 className="glass_background" id="head">
           {paths.map((val, key) => {
-            return returnLink(val, pathNames[key], key);
+            if (key !== 0) return returnLink(val, pathNames[key], key);
+            else return "";
           })}
         </h4>
       </div>
 
       <main id="main">
         <h2 className="glass_background content" id="first">
-          My projects
+          "My projects" - stored minerals
         </h2>
 
         <div className="glass_background content">
@@ -74,7 +77,7 @@ export default function Projects({ paths, pathNames, pageNumber }) {
             front-end. Back-end handles data flow flow between front and
             database or other files that data is saved into. As for now users
             can create into plain txt that is formatted to store data, XML
-            format - back-end has custom parser and also into database.
+            format (back-end has custom XML parser) and also into database.
           </p>
         </div>
       </main>
