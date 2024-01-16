@@ -1,1 +1,1 @@
-Main branch for portfolio development
+My persnal portfolio made using React
