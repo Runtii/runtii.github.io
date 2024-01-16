@@ -36,6 +36,7 @@ $shadow-size: 1.5px;
 .glass_background.content {
   margin-top: 20px;
   flex-direction: column;
+  width: 30%;
 }
 
 .title {
@@ -91,6 +92,10 @@ $shadow-size: 1.5px;
 
 p {
   font-size: calc(10px + 2vmin);
+}
+
+div.glass_background.content > h2 {
+  margin-top: 0px;
 }
 
 h2,

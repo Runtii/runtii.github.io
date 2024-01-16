@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-const returnLink = (path, pathName) => {
+const returnLink = (path, pathName, key) => {
   return (
-    <Link to={"/" + path} className="links">
+    <Link to={"/" + path} className="links" key={{ key }}>
       {pathName}
     </Link>
   );
@@ -34,7 +34,7 @@ export default function About({ paths, pathNames, pageNumber }) {
         </h1>
         <h4 className="glass_background" id="head">
           {paths.map((val, key) => {
-            return returnLink(val, pathNames[key]);
+            return returnLink(val, pathNames[key], key);
           })}
         </h4>
       </div>
@@ -48,8 +48,8 @@ export default function About({ paths, pathNames, pageNumber }) {
           I'm a aspiring front-end developer, but someone after seeing my
           projects might even say full-stack developer. Mainly due to creating
           both client and server apps (with data base connected of course) for
-          my projects and I have to admit I really enjoy connecting both via
-          requests.
+          my projects and I have to admit I really enjoy creating those types of
+          structures.
         </p>
         <p className="glass_background" id="last">
           I do my best to make my projects good looking... but we all know that

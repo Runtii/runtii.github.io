@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-const returnLink = (path, pathName) => {
+const returnLink = (path, pathName, key) => {
   return (
-    <Link to={"/" + path} className="links">
+    <Link to={"/" + path} className="links" key={{ key }}>
       {pathName}
     </Link>
   );
@@ -18,7 +18,7 @@ export default function Home({ paths, pathNames, pageNumber }) {
         </h1>
         <h4 className="glass_background" id="head">
           {paths.map((val, key) => {
-            return returnLink(val, pathNames[key]);
+            return returnLink(val, pathNames[key], key);
           })}
         </h4>
       </div>
