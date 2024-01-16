@@ -1,1 +1,1 @@
-Dev branch for portfolio development
+Main branch for portfolio development
