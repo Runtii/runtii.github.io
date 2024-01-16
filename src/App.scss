@@ -1,10 +1,154 @@
+$text-color: rgb(255, 255, 255);
+$shadow-color: rgb(92, 21, 173);
+$shadow-size: 1.5px;
+
 .App-header {
-  background-color: #282c34;
+  // background-color: #282c34;
+  background-image: url("images/583269.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
   min-height: 100vh;
+  height: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  font-size: calc(12px + 2vmin);
+}
+
+.glass_background {
+  padding: 15px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 52, 63, 0.15) 0%,
+    rgba(0, 107, 109, 0.15) 50%,
+    rgba(0, 115, 138, 0.15) 100%
+  );
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+  color: $text-color;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
+    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
+}
+
+.glass_background.content {
+  margin-top: 20px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+  padding-bottom: 50px;
+  z-index: 100;
+}
+
+.links {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#title {
+  margin: 0px 0px 0px 20px;
+  width: 10rem;
+  justify-content: left;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#head {
+  height: 30px;
+  width: auto;
+  justify-content: right;
+  margin: 25px 0px 0px 20px;
+  position: fixed;
+  top: 0;
+  right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#main {
+  height: auto;
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+#first {
+  margin-top: 20px;
+}
+
+#last {
+  margin-bottom: 20px;
+}
+
+p {
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+div.glass_background.content > h2 {
+  margin-top: 0px;
+}
+
+h2,
+h3,
+h4 {
+  margin: 20px 0px 0px 0px;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+h4 {
+  margin: 0;
+}
+
+a {
+  $link-shadow-color: white;
+  color: rgb(145, 74, 212);
+  text-shadow: (-$shadow-size) 0 $link-shadow-color,
+    0 $shadow-size $link-shadow-color, $shadow-size 0 $link-shadow-color,
+    0 (-$shadow-size) $link-shadow-color;
+  text-decoration: none;
+}
+
+a#hideLink {
+  color: $text-color;
+  text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
+    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
+}
+
+//scrollbar
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(34, 0, 73);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(119, 0, 255);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(98, 0, 209);
 }
