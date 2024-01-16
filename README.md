@@ -1,1 +1,1 @@
-My persnal portfolio made using React
+My personal portfolio made using React
