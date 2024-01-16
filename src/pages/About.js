@@ -9,29 +9,29 @@ const returnLink = (path, pathName, key) => {
   );
 };
 
-const move = () => {
-  let collection = document.getElementsByClassName("glass_background");
-  console.log(collection);
-  for (let i in collection) {
-    if (i < collection.length) {
-      console.log(collection[i]);
-      collection[i].style.top =
-        parseFloat(collection[i].style.top || 0) + 5 + "px";
-      collection[i].style.left =
-        parseFloat(collection[i].style.left || 0) + 5 + "px";
-      collection[i].style.rotate =
-        parseFloat(collection[i].style.rotate || 0) + 0.1 + "deg";
-    }
-  }
-};
+// const move = () => {
+//   let collection = document.getElementsByClassName("glass_background");
+//   console.log(collection);
+//   for (let i in collection) {
+//     if (i < collection.length) {
+//       console.log(collection[i]);
+//       collection[i].style.top =
+//         parseFloat(collection[i].style.top || 0) + 5 + "px";
+//       collection[i].style.left =
+//         parseFloat(collection[i].style.left || 0) + 5 + "px";
+//       collection[i].style.rotate =
+//         parseFloat(collection[i].style.rotate || 0) + 0.1 + "deg";
+//     }
+//   }
+// };
 
 export default function About({ paths, pathNames, pageNumber }) {
   return (
     <>
       <div className="title">
         <h1 className="glass_background" id="title">
-          <a id="hideLink" href="/">
-            {pathNames[pageNumber]}
+          <a className="hideLink" href="/">
+            Home
           </a>
         </h1>
         <h4 className="glass_background" id="head">
@@ -42,23 +42,23 @@ export default function About({ paths, pathNames, pageNumber }) {
         </h4>
       </div>
       <main id="main">
-        <p className="glass_background" id="first">
+        <p className="glass_background content" id="first">
           Hi! I'm Albert Poniedziałek, it would be Albert Monday in english if
           translated. Yes i know that a lot of people don't like Mondays,
           nonetheless i hope that we will get along.
         </p>
-        <p className="glass_background">
+        <p className="glass_background content">
           I'm a aspiring front-end developer, but someone after seeing my
           projects might even say full-stack developer. Mainly due to creating
           both client and server apps (with data base connected of course) for
           my projects and I have to admit I really enjoy creating those types of
           structures.
         </p>
-        <p className="glass_background" id="last">
+        <p className="glass_background content" id="last">
           I do my best to make my projects good looking... but we all know that
           it is difficult and not always goes to plan.
         </p>
-        <input type="button" onClick={() => move()}></input>
+        {/* <input type="button" onClick={() => move()}></input> */}
       </main>
     </>
   );

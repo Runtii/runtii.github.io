@@ -18,29 +18,31 @@ $shadow-size: 1.5px;
 }
 
 .glass_background {
-  padding: 15px;
   background: linear-gradient(
     135deg,
     rgba(0, 52, 63, 0.15) 0%,
     rgba(0, 107, 109, 0.15) 50%,
     rgba(0, 115, 138, 0.15) 100%
   );
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(48, 48, 48, 0.15);
   backdrop-filter: blur(1px);
   border-radius: 10px;
   color: $text-color;
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
-    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
+    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color !important;
 }
 
 .glass_background.content {
   margin-top: 20px;
   flex-direction: column;
-  width: 100%;
+  width: auto;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 .title {
@@ -48,25 +50,39 @@ $shadow-size: 1.5px;
   flex-direction: row;
   width: 100%;
   height: 80px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   z-index: 100;
 }
 
 .links {
   margin-left: 40px;
   margin-right: 40px;
+  color: rgb(145, 74, 212);
+  text-shadow: (-$shadow-size) 0 $text-color, 0 $shadow-size $text-color,
+    $shadow-size 0 $text-color, 0 (-$shadow-size) $text-color !important;
+}
+
+.hideLink {
+  $hide-link-shadow-color: rgb(145, 74, 212);
+  color: white;
+  text-shadow: (-$shadow-size) 0 $hide-link-shadow-color,
+    0 $shadow-size $hide-link-shadow-color,
+    $shadow-size 0 $hide-link-shadow-color,
+    0 (-$shadow-size) $hide-link-shadow-color !important;
 }
 
 #title {
+  padding: 10px;
   margin: 0px 0px 0px 20px;
   width: 10rem;
-  justify-content: left;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
 }
 
 #head {
+  padding: 10px 30px 10px 30px;
   height: 30px;
   width: auto;
   justify-content: right;
@@ -74,17 +90,20 @@ $shadow-size: 1.5px;
   position: fixed;
   top: 0;
   right: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 #main {
   height: auto;
-  width: 30%;
+  width: 40%;
   justify-content: center;
+  text-align: center;
   align-items: center;
   flex-direction: column;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #first {
@@ -93,6 +112,10 @@ $shadow-size: 1.5px;
 
 #last {
   margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
 }
 
 p {
@@ -116,21 +139,6 @@ h4 {
   margin: 0;
 }
 
-a {
-  $link-shadow-color: white;
-  color: rgb(145, 74, 212);
-  text-shadow: (-$shadow-size) 0 $link-shadow-color,
-    0 $shadow-size $link-shadow-color, $shadow-size 0 $link-shadow-color,
-    0 (-$shadow-size) $link-shadow-color;
-  text-decoration: none;
-}
-
-a#hideLink {
-  color: $text-color;
-  text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
-    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
-}
-
 //scrollbar
 
 /* width */
@@ -151,4 +159,45 @@ a#hideLink {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(98, 0, 209);
+}
+
+@media (max-width: 1200px) {
+  #main {
+    width: 60%;
+  }
+  .glass_background#head {
+    width: auto;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 900px) {
+  .glass_background {
+    font-size: medium;
+  }
+  .glass_background#head {
+    width: auto;
+    font-size: medium;
+    margin-top: 0px;
+  }
+  .glass_background#title {
+    font-size: larger;
+  }
+  a.links {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  #head {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+  }
+  #title {
+    width: 5rem;
+  }
 }

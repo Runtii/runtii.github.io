@@ -14,8 +14,8 @@ export default function Projects({ paths, pathNames, pageNumber }) {
     <>
       <div className="title">
         <h1 className="glass_background" id="title">
-          <a id="hideLink" href="/">
-            {pathNames[pageNumber]}
+          <a className="hideLink" href="/">
+            Home
           </a>
         </h1>
         <h4 className="glass_background" id="head">
@@ -32,7 +32,7 @@ export default function Projects({ paths, pathNames, pageNumber }) {
         </h2>
 
         <div className="glass_background content">
-          <a href="https://github.com/Runtii/Notes-wallet">
+          <a href="https://github.com/Runtii/Notes-wallet" className="links">
             <h4>Notes wallet</h4>
           </a>
           <p>
@@ -47,7 +47,7 @@ export default function Projects({ paths, pathNames, pageNumber }) {
           </p>
         </div>
         <div className="glass_background content">
-          <a href="https://github.com/Runtii/password_wallet">
+          <a href="https://github.com/Runtii/password_wallet" className="links">
             <h4>Password wallet</h4>
           </a>
           <p>
@@ -65,7 +65,7 @@ export default function Projects({ paths, pathNames, pageNumber }) {
           </p>
         </div>
         <div className="glass_background content" id="last">
-          <a href="https://github.com/Runtii/IS-APP">
+          <a href="https://github.com/Runtii/IS-APP" className="links">
             <h4>IS APP</h4>
           </a>
           <p>

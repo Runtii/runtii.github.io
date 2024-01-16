@@ -14,8 +14,8 @@ export default function Home({ paths, pathNames, pageNumber }) {
     <>
       <div className="title">
         <h1 className="glass_background" id="title">
-          <a id="hideLink" href="/">
-            {pathNames[pageNumber]}
+          <a className="hideLink" href="/">
+            Home
           </a>
         </h1>
         <h4 className="glass_background" id="head">
@@ -26,7 +26,7 @@ export default function Home({ paths, pathNames, pageNumber }) {
         </h4>
       </div>
 
-      <main className="glass_background" id="main">
+      <main className="glass_background content" id="main">
         <h2>Hi! I'm Albert Poniedziałek</h2>
         <p>
           This is my spaceship (portfolio). You can find more information about
