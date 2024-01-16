@@ -32,12 +32,11 @@ export default function About({ paths, pathNames, pageNumber }) {
         <h1 className="glass_background" id="title">
           {pathNames[pageNumber]}
         </h1>
-        <head className="glass_background" id="head">
+        <h4 className="glass_background" id="head">
           {paths.map((val, key) => {
-            if (key !== pageNumber) return returnLink(val, pathNames[key]);
-            else return "";
+            return returnLink(val, pathNames[key]);
           })}
-        </head>
+        </h4>
       </div>
       <main id="main">
         <p className="glass_background" id="first">

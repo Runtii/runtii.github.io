@@ -16,15 +16,14 @@ export default function Contact({ paths, pathNames, pageNumber }) {
         <h1 className="glass_background" id="title">
           {pathNames[pageNumber]}
         </h1>
-        <head className="glass_background" id="head">
+        <h4 className="glass_background" id="head">
           {paths.map((val, key) => {
-            if (key !== pageNumber) return returnLink(val, pathNames[key]);
-            else return "";
+            return returnLink(val, pathNames[key]);
           })}
-        </head>
+        </h4>
       </div>
       <main className="glass_background" id="main">
-        <p>Contact me!</p>
+        <h3>Contact me!</h3>
       </main>
     </>
   );
