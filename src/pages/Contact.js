@@ -12,8 +12,19 @@ const returnLink = (path, pathName, key) => {
 };
 
 export default function Contact({ paths, pathNames }) {
+  let random_number = Math.random(3) + 1;
+  let Background = "images/contact" + random_number + ".png";
   return (
-    <div className="main-frame contact">
+    <div
+      className="main-frame contact"
+      style={{
+        backgroundImage: `url(${Background})`,
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
       <div className="title">
         <h1 className="glass_background" id="title">
           <a className="hideLink" href="/">
