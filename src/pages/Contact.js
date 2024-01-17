@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const returnLink = (path, pathName, key) => {
   return (
-    <Link to={"/" + path} className="links" key={{ key }}>
-      {pathName}
-    </Link>
+    <h4>
+      <Link to={"/" + path} className="links" key={{ key }}>
+        {pathName}
+      </Link>
+    </h4>
   );
 };
 
@@ -18,14 +20,14 @@ export default function Contact({ paths, pathNames }) {
             Home
           </a>
         </h1>
-        <h4 className="glass_background" id="head">
+        <div className="glass_background" id="head">
           {paths.map((val, key) => {
             if (key !== 0) return returnLink(val, pathNames[key], key);
             else return "";
           })}
-        </h4>
+        </div>
       </div>
-      <main id="main">
+      <main className="main">
         <div className="glass_background content" id="first">
           <h2>Contact me!</h2>
         </div>

@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const returnLink = (path, pathName, key) => {
   return (
-    <Link to={"/" + path} className="links" key={{ key }}>
-      {pathName}
-    </Link>
+    <h4>
+      <Link to={"/" + path} className="links" key={{ key }}>
+        {pathName}
+      </Link>
+    </h4>
   );
 };
 
@@ -34,14 +36,14 @@ export default function About({ paths, pathNames }) {
             Home
           </a>
         </h1>
-        <h4 className="glass_background" id="head">
+        <div className="glass_background" id="head">
           {paths.map((val, key) => {
             if (key !== 0) return returnLink(val, pathNames[key], key);
             else return "";
           })}
-        </h4>
+        </div>
       </div>
-      <main id="main">
+      <main className="main">
         <p className="glass_background content" id="first">
           Hi! I'm Albert Poniedziałek, it would be Albert Monday in english if
           translated. Yes i know that a lot of people don't like Mondays,

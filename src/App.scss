@@ -1,10 +1,8 @@
-$text-color: rgb(255, 255, 255);
-$shadow-color: rgb(92, 21, 173);
-$shadow-size: 1.5px;
+$text-color: rgb(59, 47, 11);
+$shadow-color: rgb(195, 230, 42);
+$shadow-size: 1px;
 
 .main-frame {
-  // background-color: #282c34;
-
   min-height: 100vh;
   height: 100%;
   display: flex;
@@ -48,22 +46,19 @@ $shadow-size: 1.5px;
 .glass_background {
   background: linear-gradient(
     135deg,
-    rgba(0, 52, 63, 0.15) 0%,
-    rgba(0, 107, 109, 0.15) 50%,
-    rgba(0, 115, 138, 0.15) 100%
+    rgba(0, 52, 63, 0.3) 0%,
+    rgba(0, 107, 109, 0.3) 50%,
+    rgba(0, 115, 138, 0.3) 100%
   );
   box-shadow: 0 8px 32px rgba(48, 48, 48, 0.15);
   backdrop-filter: blur(1px);
   border-radius: 10px;
-  color: $text-color;
   display: flex;
   margin-left: auto;
   margin-right: auto;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
-    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color !important;
 }
 
 .glass_background.content {
@@ -85,18 +80,50 @@ $shadow-size: 1.5px;
 .links {
   margin-left: 40px;
   margin-right: 40px;
-  color: rgb(145, 74, 212);
-  text-shadow: (-$shadow-size) 0 $text-color, 0 $shadow-size $text-color,
-    $shadow-size 0 $text-color, 0 (-$shadow-size) $text-color !important;
 }
 
-.hideLink {
-  $hide-link-shadow-color: rgb(145, 74, 212);
-  color: white;
-  text-shadow: (-$shadow-size) 0 $hide-link-shadow-color,
-    0 $shadow-size $hide-link-shadow-color,
-    $shadow-size 0 $hide-link-shadow-color,
-    0 (-$shadow-size) $hide-link-shadow-color !important;
+a {
+  text-decoration: none;
+}
+
+.main {
+  height: 80vh;
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow-y: auto;
+  scrollbar-color: rgb(102, 122, 10) rgb(3, 65, 83) !important;
+  scrollbar-width: thin !important;
+}
+
+//scrollbar
+
+/* width */
+.main::-webkit-scrollbar {
+  width: 0.8rem;
+}
+/* Track */
+.main::-webkit-scrollbar-track {
+  background: rgb(3, 65, 83);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+/* Handle */
+.main::-webkit-scrollbar-thumb {
+  background: rgb(102, 122, 10);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+/* Handle on hover */
+.main::-webkit-scrollbar-thumb:hover {
+  background: rgb(75, 90, 8);
 }
 
 #title {
@@ -120,20 +147,6 @@ $shadow-size: 1.5px;
   right: 20px;
 }
 
-#main {
-  height: auto;
-  width: 40%;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 #first {
   margin-top: 20px;
 }
@@ -142,16 +155,23 @@ $shadow-size: 1.5px;
   margin-bottom: 20px;
 }
 
-a {
-  text-decoration: none;
-}
-
 p {
-  font-size: calc(10px + 2vmin);
+  color: rgb(210, 255, 49);
+  font-size: calc(10px + 3vmin);
 }
 
 div.glass_background.content > h2 {
   margin-top: 0px;
+}
+
+a {
+  color: aqua;
+}
+h1,
+h2,
+h3,
+h4 {
+  color: white;
 }
 
 h2,
@@ -167,30 +187,8 @@ h4 {
   margin: 0;
 }
 
-//scrollbar
-
-/* width */
-::-webkit-scrollbar {
-  width: 0.8rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: rgb(34, 0, 73);
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(119, 0, 255);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(98, 0, 209);
-}
-
 @media (max-width: 1200px) {
-  #main {
+  .main {
     width: 60%;
   }
   .glass_background#head {
