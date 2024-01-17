@@ -9,8 +9,6 @@ import Contact from "./pages/Contact";
  * paths - names of paths that are used by the browser
  *
  * pathNames - names of pages that are used throughout displayed page
- *
- * pageNumber - ID of page
  */
 
 function App() {
@@ -22,27 +20,19 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={
-              <Home paths={paths} pathNames={pathNames} pageNumber={0} />
-            }
+            element={<Home paths={paths} pathNames={pathNames} />}
           />
           <Route
             path="/About"
-            element={
-              <About paths={paths} pathNames={pathNames} pageNumber={1} />
-            }
+            element={<About paths={paths} pathNames={pathNames} />}
           />
           <Route
             path="/Projects"
-            element={
-              <Projects paths={paths} pathNames={pathNames} pageNumber={2} />
-            }
+            element={<Projects paths={paths} pathNames={pathNames} />}
           />
           <Route
             path="/Contact"
-            element={
-              <Contact paths={paths} pathNames={pathNames} pageNumber={3} />
-            }
+            element={<Contact paths={paths} pathNames={pathNames} />}
           />
         </Routes>
       </header>

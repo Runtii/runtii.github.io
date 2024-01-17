@@ -25,9 +25,9 @@ const returnLink = (path, pathName, key) => {
 //   }
 // };
 
-export default function About({ paths, pathNames, pageNumber }) {
+export default function About({ paths, pathNames }) {
   return (
-    <>
+    <div className="main-frame about">
       <div className="title">
         <h1 className="glass_background" id="title">
           <a className="hideLink" href="/">
@@ -60,6 +60,6 @@ export default function About({ paths, pathNames, pageNumber }) {
         </p>
         {/* <input type="button" onClick={() => move()}></input> */}
       </main>
-    </>
+    </div>
   );
 }

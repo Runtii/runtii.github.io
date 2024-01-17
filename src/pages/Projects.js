@@ -9,9 +9,9 @@ const returnLink = (path, pathName, key) => {
   );
 };
 
-export default function Projects({ paths, pathNames, pageNumber }) {
+export default function Projects({ paths, pathNames }) {
   return (
-    <>
+    <div className="main-frame projects">
       <div className="title">
         <h1 className="glass_background" id="title">
           <a className="hideLink" href="/">
@@ -81,6 +81,6 @@ export default function Projects({ paths, pathNames, pageNumber }) {
           </p>
         </div>
       </main>
-    </>
+    </div>
   );
 }

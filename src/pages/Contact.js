@@ -9,9 +9,9 @@ const returnLink = (path, pathName, key) => {
   );
 };
 
-export default function Contact({ paths, pathNames, pageNumber }) {
+export default function Contact({ paths, pathNames }) {
   return (
-    <>
+    <div className="main-frame contact">
       <div className="title">
         <h1 className="glass_background" id="title">
           <a className="hideLink" href="/">
@@ -54,6 +54,6 @@ export default function Contact({ paths, pathNames, pageNumber }) {
           </a>
         </div>
       </main>
-    </>
+    </div>
   );
 }

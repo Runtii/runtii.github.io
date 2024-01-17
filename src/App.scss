@@ -2,19 +2,47 @@ $text-color: rgb(255, 255, 255);
 $shadow-color: rgb(92, 21, 173);
 $shadow-size: 1.5px;
 
-.App-header {
+.main-frame {
   // background-color: #282c34;
-  background-image: url("images/583269.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+
   min-height: 100vh;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   font-size: calc(12px + 2vmin);
+}
+
+.home {
+  background-image: url("images/main.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.about {
+  background-image: url("images/main.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.projects {
+  background-image: url("images/projects.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.contact {
+  background-image: url("images/main.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 
 .glass_background {
