@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const returnLink = (path, pathName, key) => {
   return (
-    <h4>
-      <Link to={"/" + path} className="links" key={{ key }}>
+    <h4 key={key}>
+      <Link to={"/" + path} className="links">
         {pathName}
       </Link>
     </h4>
@@ -32,11 +32,15 @@ export default function Home({ paths, pathNames }) {
         <div className="glass_background content">
           <h2>Hi! I'm Albert Poniedziałek</h2>
           <p>
-            This is my spaceship (portfolio). You can find more information
-            about captain of this spaceship (me) if you head to About page. If
-            you are searching for some minerals, namely "projects" head to
-            Project page. Lastly if you want to communicate with captain of this
-            spaceship head to Contact area.
+            I'm captain of this spaceship. If You want to find more information
+            about me, head straight to our archives, where We catalog everything
+            We come across while exploring space. Oh and you have to know that
+            archives are labeled "About". If you want to trade with our
+            merchants like buy some minerals, projects or some space fuel head
+            straight to storage units, they are labeled "Projects". Lastly if
+            you want to have a relaxing conversation with something to drink
+            while we will be going through endless void of universe gazing upon
+            natural wonders head to Contact area.
           </p>
         </div>
       </main>

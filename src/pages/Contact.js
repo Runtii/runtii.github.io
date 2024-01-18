@@ -7,8 +7,8 @@ import img4 from "../images/contact4.png";
 
 const returnLink = (path, pathName, key) => {
   return (
-    <h4>
-      <Link to={"/" + path} className="links" key={{ key }}>
+    <h4 key={key}>
+      <Link to={"/" + path} className="links">
         {pathName}
       </Link>
     </h4>
