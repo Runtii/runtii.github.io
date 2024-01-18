@@ -21,30 +21,6 @@ $random_number: random(3) + 1;
   background-size: cover;
 }
 
-.about {
-  background-image: url("images/about" + $random_number + ".png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-
-.projects {
-  background-image: url("images/projects" + $random_number + ".png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-
-.contact {
-  background-image: url("images/contact" + $random_number + ".png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-
 .glass_background {
   background: linear-gradient(
     135deg,

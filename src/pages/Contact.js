@@ -1,5 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import img1 from "../images/contact1.png";
+import img2 from "../images/contact2.png";
+import img3 from "../images/contact3.png";
+import img4 from "../images/contact4.png";
 
 const returnLink = (path, pathName, key) => {
   return (
@@ -11,9 +15,35 @@ const returnLink = (path, pathName, key) => {
   );
 };
 
+const randomImage = () => {
+  let RNG = Math.floor(Math.random() * 4) + 1;
+  switch (RNG) {
+    case 1:
+      return img1;
+    case 2:
+      return img2;
+    case 3:
+      return img3;
+    case 4:
+      return img4;
+    default:
+      break;
+  }
+};
+
 export default function Contact({ paths, pathNames }) {
+  let img = randomImage();
   return (
-    <div className="main-frame contact">
+    <div
+      className="main-frame"
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
       <div className="title">
         <h1 className="glass_background" id="title">
           <a className="hideLink" href="/">
