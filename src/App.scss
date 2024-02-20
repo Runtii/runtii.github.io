@@ -60,10 +60,12 @@ $shadow-size: 1px;
 .links {
   margin-left: 40px;
   margin-right: 40px;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .main {
@@ -81,6 +83,33 @@ a {
   overflow-y: auto;
   scrollbar-color: rgb(102, 122, 10) rgb(3, 65, 83) !important;
   scrollbar-width: thin !important;
+}
+
+/* styles for transition animation that appears when site changes */
+
+body {
+  overflow: hidden;
+}
+
+.rightWing,
+.leftWing {
+  height: 100vh;
+  width: 50vw;
+  position: absolute;
+}
+
+.leftWing {
+  background-color: rgb(99, 21, 21);
+  overflow: hidden;
+  left: 0vw;
+  z-index: 9999;
+}
+
+.rightWing {
+  background-color: rgb(37, 47, 78);
+  overflow: hidden;
+  right: 0vw;
+  z-index: 9999;
 }
 
 //scrollbar
@@ -109,7 +138,7 @@ a {
 #title {
   padding: 10px;
   margin: 0px 0px 0px 20px;
-  width: 10rem;
+  width: auto;
   justify-content: center;
   position: fixed;
   top: 0;
@@ -144,7 +173,8 @@ div.glass_background.content > h2 {
   margin-top: 0px;
 }
 
-a {
+a,
+div.links {
   color: aqua;
 }
 h1,
@@ -157,7 +187,6 @@ h4 {
 h2,
 h3,
 h4 {
-  margin: 20px 0px 0px 0px;
   height: auto;
   justify-content: center;
   text-align: center;
@@ -165,6 +194,7 @@ h4 {
 
 h4 {
   margin: 0;
+  margin-left: 20px;
 }
 
 @media (max-width: 1200px) {
