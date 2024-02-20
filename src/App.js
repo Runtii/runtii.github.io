@@ -36,23 +36,16 @@ function App() {
   const animate = (state) => {
     let left = document.getElementsByClassName("leftWing");
     let right = document.getElementsByClassName("rightWing");
-    let id = null;
-    let pos = 0;
-    clearInterval(id);
-    id = setInterval(frame, 1);
-    function frame() {
-      if (pos === 50) {
-        clearInterval(id);
-      } else {
-        pos++;
-        if (state === "opening") {
-          left[0].style.left = -pos + "vw";
-          right[0].style.right = -pos + "vw";
-        } else {
-          left[0].style.left = -50 + pos + "vw";
-          right[0].style.right = -50 + pos + "vw";
-        }
-      }
+    if (state === "opening") {
+      left[0].classList.add("leftOpen");
+      left[0].classList.remove("leftClose");
+      right[0].classList.add("rightOpen");
+      right[0].classList.remove("rightClose");
+    } else {
+      left[0].classList.add("leftClose");
+      left[0].classList.remove("leftOpen");
+      right[0].classList.add("rightClose");
+      right[0].classList.remove("rightOpen");
     }
   };
 
@@ -66,7 +59,7 @@ function App() {
     let RNG = Math.floor(Math.random() * 4);
     setTimeout(function () {
       openingAnimation();
-    }, 500);
+    }, 1000);
     switch (path) {
       case "Home":
         setImg(homeImg);
@@ -91,7 +84,7 @@ function App() {
       setTimeout(() => {
         setPath(path);
         setLastPath(path);
-      }, 1500);
+      }, 2000);
     });
   };
 

@@ -112,6 +112,29 @@ body {
   z-index: 9999;
 }
 
+$bezier: cubic-bezier(0.57, 0.21, 0.27, 0.91);
+
+.leftOpen {
+  left: -50vw !important;
+  transition: left 2s;
+  transition-timing-function: $bezier;
+}
+.leftClose {
+  left: 0vw !important;
+  transition: left 2s;
+  transition-timing-function: $bezier;
+}
+.rightOpen {
+  right: -50vw !important;
+  transition: right 2s;
+  transition-timing-function: $bezier;
+}
+.rightClose {
+  right: 0vw !important;
+  transition: right 2s;
+  transition-timing-function: $bezier;
+}
+
 //scrollbar
 
 /* width */
