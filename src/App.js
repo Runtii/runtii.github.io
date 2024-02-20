@@ -79,7 +79,7 @@ function App() {
   }, [path]);
 
   const closingAnimation = (path) => {
-    let duration = 3000;
+    let duration = 2000;
     animate("closing");
     return new Promise(() => {
       setTimeout(() => {
