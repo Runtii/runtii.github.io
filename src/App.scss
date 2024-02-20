@@ -113,25 +113,26 @@ body {
 }
 
 $bezier: cubic-bezier(0.57, 0.21, 0.27, 0.91);
+$duration: 3s;
 
 .leftOpen {
   left: -50vw !important;
-  transition: left 2s;
+  transition: left $duration;
   transition-timing-function: $bezier;
 }
 .leftClose {
   left: 0vw !important;
-  transition: left 2s;
+  transition: left $duration;
   transition-timing-function: $bezier;
 }
 .rightOpen {
   right: -50vw !important;
-  transition: right 2s;
+  transition: right $duration;
   transition-timing-function: $bezier;
 }
 .rightClose {
   right: 0vw !important;
-  transition: right 2s;
+  transition: right $duration;
   transition-timing-function: $bezier;
 }
 
