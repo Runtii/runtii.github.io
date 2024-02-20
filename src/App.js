@@ -1,14 +1,7 @@
 import "./App.scss";
 import React, { useEffect, useState } from "react";
 
-import {
-  Routes,
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -37,67 +30,39 @@ function App() {
   const [path, setPath] = useState("Home");
   const [lastPath, setLastPath] = useState("Home");
   const [img, setImg] = useState(homeImg);
-  const aboutImg = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
-  const contactImg = [contactImg1, contactImg2, contactImg3, contactImg4];
-  const projectImg = [projectImg1, projectImg2, projectImg3, projectImg4];
   const paths = ["", "About", "Projects", "Contact"];
   const pathsNames = ["Home", paths[1], paths[2], paths[3]];
-  let left = document.getElementsByClassName("leftWing");
-  let right = document.getElementsByClassName("rightWing");
 
-  const openingAnimation = () => {
+  const animate = (state) => {
+    let left = document.getElementsByClassName("leftWing");
+    let right = document.getElementsByClassName("rightWing");
     let id = null;
     let pos = 0;
     clearInterval(id);
-    id = setInterval(frame, 2);
+    id = setInterval(frame, 1);
     function frame() {
-      if (pos == 50) {
+      if (pos === 50) {
         clearInterval(id);
       } else {
         pos++;
-        left[0].style.left = -pos + "vw";
-        right[0].style.right = -pos + "vw";
+        if (state === "opening") {
+          left[0].style.left = -pos + "vw";
+          right[0].style.right = -pos + "vw";
+        } else {
+          left[0].style.left = -50 + pos + "vw";
+          right[0].style.right = -50 + pos + "vw";
+        }
       }
     }
   };
-
-  const closingAnimation = (path) => {
-    let id = null;
-    let pos = 0;
-    clearInterval(id);
-    id = setInterval(frame, 2);
-    function frame() {
-      if (pos == 50) {
-        clearInterval(id);
-      } else {
-        pos++;
-        left[0].style.left = -50 + pos + "vw";
-        right[0].style.right = -50 + pos + "vw";
-      }
-    }
-    return new Promise(() => {
-      setTimeout(() => {
-        setPath(path);
-        setLastPath(path);
-      }, 2000);
-    });
-  };
-
-  const NavLink = (props) => (
-    <h4>
-      <Link
-        {...props}
-        onClick={async () => {
-          console.log(lastPath, props.path);
-          if (lastPath !== props.path) {
-            await closingAnimation(props.path);
-          }
-        }}
-      />
-    </h4>
-  );
 
   useEffect(() => {
+    const openingAnimation = () => {
+      animate("opening");
+    };
+    const aboutImg = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
+    const contactImg = [contactImg1, contactImg2, contactImg3, contactImg4];
+    const projectImg = [projectImg1, projectImg2, projectImg3, projectImg4];
     let RNG = Math.floor(Math.random() * 4);
     setTimeout(function () {
       openingAnimation();
@@ -115,8 +80,34 @@ function App() {
       case "Projects":
         setImg(projectImg[RNG]);
         break;
+      default:
+        break;
     }
-  }, [path, aboutImg, contactImg, projectImg]);
+  }, [path]);
+
+  const closingAnimation = (path) => {
+    animate("closing");
+    return new Promise(() => {
+      setTimeout(() => {
+        setPath(path);
+        setLastPath(path);
+      }, 1500);
+    });
+  };
+
+  const NavLink = (props) => (
+    <h4>
+      <Link
+        {...props}
+        onClick={async () => {
+          console.log(lastPath, props.path);
+          if (lastPath !== props.path) {
+            await closingAnimation(props.path);
+          }
+        }}
+      />
+    </h4>
+  );
 
   const returnContent = (path) => {
     switch (path) {
@@ -150,9 +141,9 @@ function App() {
         >
           <div className="title">
             <h1 className="glass_background" id="title">
-              <a className="hideLink" href="/">
+              <NavLink to={"/"} path={"Home"} className="mainLink">
                 {path}
-              </a>
+              </NavLink>
             </h1>
             <div className="glass_background" id="head">
               {paths.map((val, key) => {
