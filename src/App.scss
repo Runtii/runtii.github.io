@@ -139,11 +139,11 @@ $duration: 2s;
 #steam1,
 #steam2,
 #steam3 {
-  background-color: rgba(142, 187, 187, 0.61);
+  position: absolute;
   height: 10rem;
   width: 10rem;
-  position: absolute;
-  visibility: hidden;
+  background-color: rgba(142, 187, 187, 0.61);
+  opacity: 0;
   z-index: 9001;
 }
 
@@ -152,21 +152,9 @@ $duration: 2s;
   top: 20vh;
 }
 
-.steam1Animation {
-  visibility: visible !important;
-  transform: scale(1.5, 0.7) !important;
-  transition: transform 2s;
-}
-
 #steam2 {
   top: 40vh;
   left: 35vw;
-}
-
-.steam2Animation {
-  visibility: visible !important;
-  transform: scale(1.5, 0.7) !important;
-  transition: transform 2s;
 }
 
 #steam3 {
@@ -174,10 +162,12 @@ $duration: 2s;
   top: 70vh;
 }
 
+.steam1Animation,
+.steam2Animation,
 .steam3Animation {
-  visibility: visible !important;
+  opacity: 1 !important;
   transform: scale(1.5, 0.7) !important;
-  transition: transform 2s;
+  transition: transform 2s, opacity 0.5s ease-in;
 }
 
 //scrollbar
