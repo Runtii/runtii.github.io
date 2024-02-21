@@ -33,29 +33,42 @@ function App() {
   const paths = ["", "About", "Projects", "Contact"];
   const pathsNames = ["Home", paths[1], paths[2], paths[3]];
 
+  const addClass = (element, cssClass) => {
+    element.classList.add(cssClass);
+  };
+
+  const removeClass = (element, cssClass) => {
+    element.classList.remove(cssClass);
+  };
+
   const animateSteam = (state) => {
     let steam1 = document.getElementById("steam1");
     let steam2 = document.getElementById("steam2");
     let steam3 = document.getElementById("steam3");
+    let steamArray = [steam1, steam2, steam3];
 
     if (state === "closing") {
-      steam1.classList.add("steam1Burst");
-      steam2.classList.add("steam2Burst");
-      steam3.classList.add("steam3Burst");
+      steamArray.map((val, key) => {
+        key += 1;
+        addClass(val, "steam" + key + "Burst");
+        return 0;
+      });
     } else if (state === "opening") {
-      steam1.classList.remove("steam1Burst");
-      steam2.classList.remove("steam2Burst");
-      steam3.classList.remove("steam3Burst");
-      steam1.classList.add("steam1FadingAway");
-      steam2.classList.add("steam2FadingAway");
-      steam3.classList.add("steam3FadingAway");
+      steamArray.map((val, key) => {
+        key += 1;
+        removeClass(val, "steam" + key + "Burst");
+        addClass(val, "steam" + key + "FadingAway");
+        return 0;
+      });
       setTimeout(function () {
         animateSteam("opened");
       }, 3000);
     } else {
-      steam1.classList.remove("steam1FadingAway");
-      steam2.classList.remove("steam2FadingAway");
-      steam3.classList.remove("steam3FadingAway");
+      steamArray.map((val, key) => {
+        key += 1;
+        removeClass(val, "steam" + key + "FadingAway");
+        return 0;
+      });
     }
   };
 
@@ -77,7 +90,7 @@ function App() {
   };
 
   const animate = (state) => {
-    let duration = state === "opening" ? 600 : 1600;
+    let duration = state === "opening" ? 100 : 1600;
     animateDoors(state);
     setTimeout(function () {
       animateSteam(state);
