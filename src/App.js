@@ -41,24 +41,43 @@ function App() {
       left[0].classList.remove("leftClose");
       right[0].classList.add("rightOpen");
       right[0].classList.remove("rightClose");
+      setTimeout(function () {
+        animateSteam("opening");
+      }, 800);
     } else {
       left[0].classList.add("leftClose");
       left[0].classList.remove("leftOpen");
       right[0].classList.add("rightClose");
       right[0].classList.remove("rightOpen");
+      setTimeout(function () {
+        animateSteam("closing");
+      }, 2000);
+    }
+  };
+
+  const animateSteam = (state) => {
+    let steam1 = document.getElementById("steam1");
+    let steam2 = document.getElementById("steam2");
+    let steam3 = document.getElementById("steam3");
+
+    if (state === "opening") {
+      steam1.classList.remove("steam1Animation");
+      steam2.classList.remove("steam2Animation");
+      steam3.classList.remove("steam3Animation");
+    } else {
+      steam1.classList.add("steam1Animation");
+      steam2.classList.add("steam2Animation");
+      steam3.classList.add("steam3Animation");
     }
   };
 
   useEffect(() => {
-    const openingAnimation = () => {
-      animate("opening");
-    };
     const aboutImg = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
     const contactImg = [contactImg1, contactImg2, contactImg3, contactImg4];
     const projectImg = [projectImg1, projectImg2, projectImg3, projectImg4];
     let RNG = Math.floor(Math.random() * 4);
     setTimeout(function () {
-      openingAnimation();
+      animate("opening");
     }, 1000);
     switch (path) {
       case "Home":
@@ -122,6 +141,9 @@ function App() {
     <div className="App">
       <div className="leftWing"></div>
       <div className="rightWing"></div>
+      <div id="steam1"></div>
+      <div id="steam2"></div>
+      <div id="steam3"></div>
       <header className="App-header">
         <div
           className="main-frame"
