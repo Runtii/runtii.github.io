@@ -113,7 +113,8 @@ body {
 }
 
 $bezier: cubic-bezier(0.57, 0.21, 0.27, 0.91);
-$duration: 2s;
+//$bezier: cubic-bezier(0.31, 1.04, 1, 0.82);
+$duration: 1.5s;
 
 .leftOpen {
   left: -50vw !important;
@@ -148,26 +149,35 @@ $duration: 2s;
 }
 
 #steam1 {
-  left: 55vw;
-  top: 20vh;
+  left: 60vw;
+  top: 15vh;
 }
 
 #steam2 {
-  top: 40vh;
-  left: 35vw;
+  rotate: 180deg;
+  top: 30vh;
+  right: 60vw;
 }
 
 #steam3 {
-  left: 55vw;
+  left: 60vw;
   top: 70vh;
 }
 
-.steam1Animation,
-.steam2Animation,
-.steam3Animation {
+.steam1Burst,
+.steam2Burst,
+.steam3Burst {
   opacity: 1 !important;
-  transform: scale(1.5, 0.7) !important;
-  transition: transform 2s, opacity 0.5s ease-in;
+  transform: scale(2, 0.7) !important;
+  transition: transform 0.5s, opacity 0.5s ease-in;
+}
+
+.steam1FadingAway,
+.steam2FadingAway,
+.steam3FadingAway {
+  opacity: 0 !important;
+  transform: scale(2.2, 0.8) !important;
+  transition: transform 2s, opacity 2s ease-in;
 }
 
 //scrollbar

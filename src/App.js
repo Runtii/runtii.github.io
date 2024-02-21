@@ -33,42 +33,55 @@ function App() {
   const paths = ["", "About", "Projects", "Contact"];
   const pathsNames = ["Home", paths[1], paths[2], paths[3]];
 
-  const animate = (state) => {
-    let left = document.getElementsByClassName("leftWing");
-    let right = document.getElementsByClassName("rightWing");
-    if (state === "opening") {
-      left[0].classList.add("leftOpen");
-      left[0].classList.remove("leftClose");
-      right[0].classList.add("rightOpen");
-      right[0].classList.remove("rightClose");
-      setTimeout(function () {
-        animateSteam("opening");
-      }, 800);
-    } else {
-      left[0].classList.add("leftClose");
-      left[0].classList.remove("leftOpen");
-      right[0].classList.add("rightClose");
-      right[0].classList.remove("rightOpen");
-      setTimeout(function () {
-        animateSteam("closing");
-      }, 2000);
-    }
-  };
-
   const animateSteam = (state) => {
     let steam1 = document.getElementById("steam1");
     let steam2 = document.getElementById("steam2");
     let steam3 = document.getElementById("steam3");
 
-    if (state === "opening") {
-      steam1.classList.remove("steam1Animation");
-      steam2.classList.remove("steam2Animation");
-      steam3.classList.remove("steam3Animation");
+    if (state === "closing") {
+      steam1.classList.add("steam1Burst");
+      steam2.classList.add("steam2Burst");
+      steam3.classList.add("steam3Burst");
+    } else if (state === "opening") {
+      steam1.classList.remove("steam1Burst");
+      steam2.classList.remove("steam2Burst");
+      steam3.classList.remove("steam3Burst");
+      steam1.classList.add("steam1FadingAway");
+      steam2.classList.add("steam2FadingAway");
+      steam3.classList.add("steam3FadingAway");
+      setTimeout(function () {
+        animateSteam("opened");
+      }, 3000);
     } else {
-      steam1.classList.add("steam1Animation");
-      steam2.classList.add("steam2Animation");
-      steam3.classList.add("steam3Animation");
+      steam1.classList.remove("steam1FadingAway");
+      steam2.classList.remove("steam2FadingAway");
+      steam3.classList.remove("steam3FadingAway");
     }
+  };
+
+  const animateDoors = (state) => {
+    let left = document.getElementsByClassName("leftWing");
+    let right = document.getElementsByClassName("rightWing");
+
+    if (state === "opening") {
+      left[0].classList.add("leftOpen");
+      left[0].classList.remove("leftClose");
+      right[0].classList.add("rightOpen");
+      right[0].classList.remove("rightClose");
+    } else {
+      left[0].classList.add("leftClose");
+      left[0].classList.remove("leftOpen");
+      right[0].classList.add("rightClose");
+      right[0].classList.remove("rightOpen");
+    }
+  };
+
+  const animate = (state) => {
+    let duration = state === "opening" ? 600 : 1600;
+    animateDoors(state);
+    setTimeout(function () {
+      animateSteam(state);
+    }, duration);
   };
 
   useEffect(() => {
@@ -76,9 +89,7 @@ function App() {
     const contactImg = [contactImg1, contactImg2, contactImg3, contactImg4];
     const projectImg = [projectImg1, projectImg2, projectImg3, projectImg4];
     let RNG = Math.floor(Math.random() * 4);
-    setTimeout(function () {
-      animate("opening");
-    }, 1000);
+    setTimeout(animate("opening"), 1000);
     switch (path) {
       case "Home":
         setImg(homeImg);
@@ -98,7 +109,7 @@ function App() {
   }, [path]);
 
   const closingAnimation = (path) => {
-    let duration = 2000;
+    let duration = 2200;
     animate("closing");
     return new Promise(() => {
       setTimeout(() => {
