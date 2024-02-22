@@ -1,6 +1,7 @@
 $text-color: rgb(59, 47, 11);
 $shadow-color: rgb(195, 230, 42);
 $shadow-size: 1px;
+$animationTick: 0.08s;
 
 .App-header {
   background-color: rgb(0, 0, 0);
@@ -114,7 +115,7 @@ body {
 
 $bezier: cubic-bezier(0.57, 0.21, 0.27, 0.91);
 //$bezier: cubic-bezier(0.31, 1.04, 1, 0.82);
-$duration: 1.5s;
+$duration: 12 * $animationTick;
 
 .leftOpen {
   left: -50vw !important;
@@ -164,20 +165,24 @@ $duration: 1.5s;
   top: 70vh;
 }
 
+$burstDuration: 5 * $animationTick;
+
 .steam1Burst,
 .steam2Burst,
 .steam3Burst {
   opacity: 1 !important;
   transform: scale(2, 0.7) !important;
-  transition: transform 0.5s, opacity 0.5s ease-in;
+  transition: transform $burstDuration, opacity $burstDuration ease-in;
 }
+
+$fadingDuration: 20 * $animationTick;
 
 .steam1FadingAway,
 .steam2FadingAway,
 .steam3FadingAway {
   opacity: 0 !important;
   transform: scale(2.2, 0.8) !important;
-  transition: transform 3s, opacity 3s ease-in;
+  transition: transform $fadingDuration, opacity $fadingDuration ease-in;
 }
 
 //scrollbar

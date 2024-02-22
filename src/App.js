@@ -1,7 +1,6 @@
 import "./App.scss";
 import React, { useEffect, useState } from "react";
-
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,29 +8,55 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
 import homeImg from "./images/main.png";
+
 import aboutImg1 from "./images/about1.png";
 import aboutImg2 from "./images/about2.png";
 import aboutImg3 from "./images/about3.png";
 import aboutImg4 from "./images/about4.png";
+
 import contactImg1 from "./images/contact1.png";
 import contactImg2 from "./images/contact2.png";
 import contactImg3 from "./images/contact3.png";
 import contactImg4 from "./images/contact4.png";
+
 import projectImg1 from "./images/projects1.png";
 import projectImg2 from "./images/projects2.png";
 import projectImg3 from "./images/projects3.png";
 import projectImg4 from "./images/projects4.png";
+
 /**
  * paths - names of paths that are used by the browser
  *
  * pathNames - names of pages that are used throughout displayed page
  */
+
 function App() {
   const [path, setPath] = useState("Home");
   const [lastPath, setLastPath] = useState("Home");
   const [img, setImg] = useState(homeImg);
   const paths = ["", "About", "Projects", "Contact"];
   const pathsNames = ["Home", paths[1], paths[2], paths[3]];
+  const [fromUrl, setFromUrl] = useState(true);
+  const location = useLocation();
+  const animationTick = 80;
+
+  const locationFromUrl = () => {
+    let { pathname } = location;
+
+    if (pathname === "" || pathname === "/") pathname = "/Home";
+
+    pathname = pathname.slice(1);
+    pathname = pathname[0].toUpperCase() + pathname.substring(1);
+
+    if (pathsNames.includes(pathname) && pathsNames !== pathname) {
+      setPath(pathname);
+      setLastPath(pathname);
+      setFromUrl(false);
+      console.log(location, path, lastPath);
+    }
+  };
+
+  if (fromUrl) locationFromUrl();
 
   const addClass = (element, cssClass) => {
     element.classList.add(cssClass);
@@ -62,7 +87,7 @@ function App() {
       });
       setTimeout(function () {
         animateSteam("opened");
-      }, 3000);
+      }, 30 * animationTick);
     } else {
       steamArray.map((val, key) => {
         key += 1;
@@ -90,19 +115,24 @@ function App() {
   };
 
   const animate = (state) => {
-    let duration = state === "opening" ? 100 : 1600;
-    animateDoors(state);
+    let tick = animationTick;
+    let steamDuration = state === "opening" ? tick : 12 * tick;
+    let openingDuration = state === "opening" ? 6 * tick : 0;
     setTimeout(function () {
       animateSteam(state);
-    }, duration);
+    }, steamDuration);
+    setTimeout(function () {
+      animateDoors(state);
+    }, openingDuration);
   };
 
   useEffect(() => {
     const aboutImg = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
     const contactImg = [contactImg1, contactImg2, contactImg3, contactImg4];
     const projectImg = [projectImg1, projectImg2, projectImg3, projectImg4];
+    let tick = animationTick;
     let RNG = Math.floor(Math.random() * 4);
-    setTimeout(animate("opening"), 1000);
+
     switch (path) {
       case "Home":
         setImg(homeImg);
@@ -119,10 +149,11 @@ function App() {
       default:
         break;
     }
+    setTimeout(animate("opening"), 20 * tick);
   }, [path]);
 
   const closingAnimation = (path) => {
-    let duration = 2200;
+    let duration = 20 * animationTick;
     animate("closing");
     return new Promise(() => {
       setTimeout(() => {
