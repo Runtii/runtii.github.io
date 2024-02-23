@@ -166,14 +166,16 @@ body {
   z-index: 9000;
 }
 
+$door: Url("./images/doorTemp.jpg");
+
 .leftWing {
-  background-image: Url("./images/metal_texture.jpg");
+  background-image: $door;
   background-size: cover;
   left: 0vw;
 }
 
 .rightWing {
-  background-image: Url("./images/metal_texture.jpg");
+  background-image: $door;
   background-size: cover;
   right: 0vw;
 }
@@ -206,10 +208,11 @@ $doorTiming: 12 * $animationTick;
 #steam1,
 #steam2,
 #steam3 {
+  background-image: url("./images/steamBurstTemp.png");
+  background-size: cover;
   position: absolute;
   height: 10rem;
   width: 10rem;
-  background-color: rgba(142, 187, 187, 0.61);
   opacity: 0;
   z-index: 9001;
 }
@@ -230,7 +233,7 @@ $doorTiming: 12 * $animationTick;
   top: 70vh;
 }
 
-$burstDuration: 5 * $animationTick;
+$burstDuration: 8 * $animationTick;
 
 .steam1Burst,
 .steam2Burst,
