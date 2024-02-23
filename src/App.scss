@@ -44,6 +44,8 @@ $animationTick: 0.08s;
   padding: 1rem 1rem 2rem 1rem;
 }
 
+/*styles of main elements (classes)*/
+
 .title {
   display: flex;
   flex-direction: row;
@@ -56,11 +58,6 @@ $animationTick: 0.08s;
 .links {
   margin-left: 40px;
   margin-right: 40px;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -79,6 +76,49 @@ a {
   overflow-y: auto;
   scrollbar-color: rgb(102, 122, 10) rgb(3, 65, 83) !important;
   scrollbar-width: thin !important;
+}
+
+/*styles of elements*/
+p {
+  color: rgb(210, 255, 49);
+  font-size: calc(10px + 3vmin);
+}
+
+a,
+div.links {
+  text-decoration: none;
+  cursor: pointer;
+  color: aqua;
+}
+
+h2,
+h3,
+h4 {
+  color: white;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/*styles of specific elements*/
+
+#title > h4 {
+  margin: 0 20px 0 20px;
+  font-size: 3.5rem;
+}
+
+#head > h4 {
+  margin: 0;
+  margin-left: 20px;
+}
+
+#head > :nth-child(1) {
+  margin-left: 0;
+}
+
+div.glass_background.content > h2 {
+  margin-top: 0px;
 }
 
 #title {
@@ -108,44 +148,6 @@ a {
 
 #last {
   margin-bottom: 20px;
-}
-
-p {
-  color: rgb(210, 255, 49);
-  font-size: calc(10px + 3vmin);
-}
-
-div.glass_background.content > h2 {
-  margin-top: 0px;
-}
-
-a,
-div.links {
-  color: aqua;
-}
-h1,
-h2,
-h3,
-h4 {
-  color: white;
-}
-
-h2,
-h3,
-h4 {
-  height: auto;
-  justify-content: center;
-  text-align: center;
-}
-
-#title > h4 {
-  margin: 0 20px 0 20px;
-  font-size: 3.5rem;
-}
-
-#head > h4 {
-  margin: 0;
-  margin-left: 20px;
 }
 
 /* styles for transition animation that appears when site changes */
