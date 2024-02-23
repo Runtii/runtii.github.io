@@ -1,5 +1,5 @@
 import "./App.scss";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -52,7 +52,6 @@ function App() {
       setPath(pathname);
       setLastPath(pathname);
       setFromUrl(false);
-      console.log(location, path, lastPath);
     }
   };
 
@@ -66,11 +65,12 @@ function App() {
     element.classList.remove(cssClass);
   };
 
-  const animateSteam = (state) => {
-    let steam1 = document.getElementById("steam1");
-    let steam2 = document.getElementById("steam2");
-    let steam3 = document.getElementById("steam3");
-    let steamArray = [steam1, steam2, steam3];
+  const animateSteam = useCallback((state) => {
+    let steamArray = [
+      document.getElementById("steam1"),
+      document.getElementById("steam2"),
+      document.getElementById("steam3"),
+    ];
 
     if (state === "closing") {
       steamArray.map((val, key) => {
@@ -95,7 +95,7 @@ function App() {
         return 0;
       });
     }
-  };
+  }, []);
 
   const animateDoors = (state) => {
     let left = document.getElementsByClassName("leftWing");
@@ -114,17 +114,20 @@ function App() {
     }
   };
 
-  const animate = (state) => {
-    let tick = animationTick;
-    let steamDuration = state === "opening" ? tick : 12 * tick;
-    let openingDuration = state === "opening" ? 6 * tick : 0;
-    setTimeout(function () {
-      animateSteam(state);
-    }, steamDuration);
-    setTimeout(function () {
-      animateDoors(state);
-    }, openingDuration);
-  };
+  const animate = useCallback(
+    (state) => {
+      let tick = animationTick;
+      let steamDuration = state === "opening" ? tick : 12 * tick;
+      let openingDuration = state === "opening" ? 6 * tick : 0;
+      setTimeout(function () {
+        animateSteam(state);
+      }, steamDuration);
+      setTimeout(function () {
+        animateDoors(state);
+      }, openingDuration);
+    },
+    [animateSteam]
+  );
 
   useEffect(() => {
     const aboutImg = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
@@ -150,7 +153,7 @@ function App() {
         break;
     }
     setTimeout(animate("opening"), 20 * tick);
-  }, [path]);
+  }, [path, animate]);
 
   const closingAnimation = (path) => {
     let duration = 20 * animationTick;
@@ -168,7 +171,6 @@ function App() {
       <Link
         {...props}
         onClick={async () => {
-          console.log(lastPath, props.path);
           if (lastPath !== props.path) {
             await closingAnimation(props.path);
           }
