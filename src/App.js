@@ -25,9 +25,21 @@ import projectImg3 from "./images/projects3.png";
 import projectImg4 from "./images/projects4.png";
 
 /**
- * paths - names of paths that are used by the browser
+ * path *state - current path
  *
- * pathNames - names of pages that are used throughout displayed page
+ * lastPath *state - last path used to prevent going from eg. Home -> Home
+ *
+ * img *state - current background image
+ *
+ * paths *Arr - names of paths that are used by the browser
+ *
+ * pathNames *Arr - names of pages that are used throughout displayed page
+ *
+ * fromUrl *bool - used to indicate if page was refreshed or not and to prevent breaking of door animation
+ *
+ * location *react-router-dom object - used to determine which patch should be set inside locationFromUrl()
+ *
+ * animationTick *number [milliseconds] - determines length of door animation
  */
 
 function App() {
@@ -40,6 +52,10 @@ function App() {
   const location = useLocation();
   const animationTick = 80;
 
+  /**
+   * pathname from *react-router-dom object useLocation() - used to determine which patch should be set
+   */
+
   const locationFromUrl = () => {
     let { pathname } = location;
 
@@ -48,22 +64,22 @@ function App() {
     pathname = pathname.slice(1);
     pathname = pathname[0].toUpperCase() + pathname.substring(1);
 
-    if (pathsNames.includes(pathname) && pathsNames !== pathname) {
+    if (pathsNames.includes(pathname)) {
       setPath(pathname);
       setLastPath(pathname);
       setFromUrl(false);
     }
   };
-
+  /**
+   * first iteration (after reload/load) has animation of opening and also fixes and sets URL and path
+   */
   if (fromUrl) locationFromUrl();
 
-  const addClass = (element, cssClass) => {
-    element.classList.add(cssClass);
-  };
-
-  const removeClass = (element, cssClass) => {
-    element.classList.remove(cssClass);
-  };
+  /**
+   * @param state *String - indicates what part of animation should be triggered
+   *
+   * steamArray *Arr - contains DOM objects that are modified during animation
+   */
 
   const animateSteam = useCallback((state) => {
     let steamArray = [
@@ -75,14 +91,14 @@ function App() {
     if (state === "closing") {
       steamArray.map((val, key) => {
         key += 1;
-        addClass(val, "steam" + key + "Burst");
+        val.classList.add("steam" + key + "Burst");
         return 0;
       });
     } else if (state === "opening") {
       steamArray.map((val, key) => {
         key += 1;
-        removeClass(val, "steam" + key + "Burst");
-        addClass(val, "steam" + key + "FadingAway");
+        val.classList.remove("steam" + key + "Burst");
+        val.classList.add("steam" + key + "FadingAway");
         return 0;
       });
       setTimeout(function () {
@@ -91,11 +107,18 @@ function App() {
     } else {
       steamArray.map((val, key) => {
         key += 1;
-        removeClass(val, "steam" + key + "FadingAway");
+        val.classList.remove("steam" + key + "FadingAway");
         return 0;
       });
     }
   }, []);
+
+  /**
+   * @param state *String - indicates what part of animation should be triggered
+   *
+   * left and right *Obj - DOM objects that are modified during animation
+   *
+   */
 
   const animateDoors = (state) => {
     let left = document.getElementsByClassName("leftWing");
@@ -114,20 +137,59 @@ function App() {
     }
   };
 
+  /**
+   * @param state *String - indicates what part of animation should be triggered
+   *
+   * tick - shortened animationTick *int [milliseconds]
+   *
+   * steamTiming *number - time [milliseconds] that indicates length of bursting and fading away parts of animation
+   *
+   * doorTiming *number - time [milliseconds] that indicates length of opening and closing parts of door animation
+   */
+
   const animate = useCallback(
     (state) => {
       let tick = animationTick;
-      let steamDuration = state === "opening" ? tick : 12 * tick;
-      let openingDuration = state === "opening" ? 6 * tick : 0;
+      let steamTiming = state === "opening" ? tick : 12 * tick;
+      let doorTiming = state === "opening" ? 6 * tick : 0;
       setTimeout(function () {
         animateSteam(state);
-      }, steamDuration);
+      }, steamTiming);
       setTimeout(function () {
         animateDoors(state);
-      }, openingDuration);
+      }, doorTiming);
     },
     [animateSteam]
   );
+
+  /**
+   * @param navigationPath - path from user input (out of NavLinks)
+   * @returns Promise that has 20 times tick latency of setting path (to ensure that doors are closed while background image is changing)
+   * lag *time [milliseconds] - latency between closing animation and changing background
+   */
+
+  const closingAnimation = (navigationPath) => {
+    let lag = 20 * animationTick;
+    animate("closing");
+    return new Promise(() => {
+      setTimeout(() => {
+        setPath(navigationPath);
+        setLastPath(navigationPath);
+      }, lag);
+    });
+  };
+
+  /**
+   * aboutImg *Arr - contains imported images for about page
+   *
+   * contactImg *Arr - contains imported images for contact page
+   *
+   * projectImg *Arr - contains imported images for project page
+   *
+   * tick - shortened animationTick *int [milliseconds]
+   *
+   * RNG *number - random number that indicates which image will be set as background
+   */
 
   useEffect(() => {
     const aboutImg = [aboutImg1, aboutImg2, aboutImg3, aboutImg4];
@@ -155,16 +217,10 @@ function App() {
     setTimeout(animate("opening"), 20 * tick);
   }, [path, animate]);
 
-  const closingAnimation = (path) => {
-    let duration = 20 * animationTick;
-    animate("closing");
-    return new Promise(() => {
-      setTimeout(() => {
-        setPath(path);
-        setLastPath(path);
-      }, duration);
-    });
-  };
+  /**
+   * @param props - data from NavLink obj containing Url and path name
+   * @returns Link obj with additional onClink that triggers door animation
+   */
 
   const NavLink = (props) => (
     <h4>
@@ -178,6 +234,12 @@ function App() {
       />
     </h4>
   );
+
+  /**
+   * @param path - path from Url/internal functions used to determine what content should be displayed
+   *
+   * @returns content from components such as "Home", "About", "Contact" and "Project" pages
+   */
 
   const returnContent = (path) => {
     switch (path) {
@@ -194,6 +256,9 @@ function App() {
     }
   };
 
+  /**
+   * main DOM structure
+   */
   return (
     <div className="App">
       <div className="leftWing"></div>
@@ -212,22 +277,26 @@ function App() {
             backgroundSize: "cover",
           }}
         >
-          <div className="title">
-            <h1 className="glass_background" id="title">
+          <nav className="title">
+            <div className="glass_background" id="title">
               <NavLink to={"/"} path={"Home"} className="mainLink">
                 {path}
               </NavLink>
-            </h1>
+            </div>
             <div className="glass_background" id="head">
               {paths.map((val, key) => {
                 return (
-                  <NavLink to={"/" + paths[key]} path={pathsNames[key]}>
+                  <NavLink
+                    to={"/" + paths[key]}
+                    path={pathsNames[key]}
+                    key={key}
+                  >
                     {pathsNames[key]}
                   </NavLink>
                 );
               })}
             </div>
-          </div>
+          </nav>
           {returnContent(path)}
         </div>
       </header>
