@@ -1,14 +1,14 @@
-$text-color: rgb(255, 255, 255);
-$shadow-color: rgb(92, 21, 173);
-$shadow-size: 1.5px;
+$text-color: rgb(59, 47, 11);
+$shadow-color: rgb(195, 230, 42);
+$shadow-size: 1px;
+$animationTick: 0.08s;
 
+/*Main frame styles*/
 .App-header {
-  // background-color: #282c34;
-  background-image: url("images/583269.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+  background-color: rgb(0, 0, 0);
+}
+
+.main-frame {
   min-height: 100vh;
   height: 100%;
   display: flex;
@@ -17,56 +17,122 @@ $shadow-size: 1.5px;
   font-size: calc(12px + 2vmin);
 }
 
+/*background of elements with content or navigation items*/
+
 .glass_background {
-  padding: 15px;
   background: linear-gradient(
     135deg,
-    rgba(0, 52, 63, 0.15) 0%,
-    rgba(0, 107, 109, 0.15) 50%,
-    rgba(0, 115, 138, 0.15) 100%
+    rgba(0, 52, 63, 0.3) 0%,
+    rgba(0, 107, 109, 0.3) 50%,
+    rgba(0, 115, 138, 0.3) 100%
   );
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(48, 48, 48, 0.15);
   backdrop-filter: blur(1px);
   border-radius: 10px;
-  color: $text-color;
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
-    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
 }
 
 .glass_background.content {
   margin-top: 20px;
   flex-direction: column;
-  width: 100%;
+  width: auto;
+  padding: 1rem 1rem 2rem 1rem;
 }
+
+/*styles of main elements (classes)*/
 
 .title {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 80px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   z-index: 100;
 }
 
 .links {
   margin-left: 40px;
   margin-right: 40px;
+  cursor: pointer;
+}
+
+.main {
+  height: 80vh;
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow-y: auto;
+  scrollbar-color: rgb(102, 122, 10) rgb(3, 65, 83) !important;
+  scrollbar-width: thin !important;
+}
+
+/*styles of elements*/
+p {
+  color: rgb(210, 255, 49);
+  font-size: calc(10px + 3vmin);
+}
+
+a,
+div.links {
+  text-decoration: none;
+  cursor: pointer;
+  color: aqua;
+}
+
+h2,
+h3,
+h4 {
+  color: white;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/*styles of specific elements*/
+
+#title > h4 {
+  margin: 0 20px 0 20px;
+  font-size: 3.5rem;
+}
+
+#head > h4 {
+  margin: 0;
+  margin-left: 20px;
+}
+
+#head > :nth-child(1) {
+  margin-left: 0;
+}
+
+div.glass_background.content > h2 {
+  margin-top: 0px;
 }
 
 #title {
+  padding: 10px;
   margin: 0px 0px 0px 20px;
-  width: 10rem;
-  justify-content: left;
+  width: auto;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
 }
 
 #head {
+  padding: 10px 30px 10px 30px;
   height: 30px;
   width: auto;
   justify-content: right;
@@ -74,17 +140,6 @@ $shadow-size: 1.5px;
   position: fixed;
   top: 0;
   right: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-#main {
-  height: auto;
-  width: 30%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
 }
 
 #first {
@@ -95,60 +150,171 @@ $shadow-size: 1.5px;
   margin-bottom: 20px;
 }
 
-p {
-  font-size: calc(10px + 2vmin);
+/* styles for transition animation that appears when site changes */
+
+body {
+  overflow: hidden;
 }
 
-div.glass_background.content > h2 {
-  margin-top: 0px;
+.rightWing,
+.leftWing {
+  height: 100vh;
+  width: 50vw;
+  position: absolute;
+  overflow: hidden;
+  background-color: rgb(17, 38, 102);
+  z-index: 9000;
 }
 
-h2,
-h3,
-h4 {
-  margin: 20px 0px 0px 0px;
-  height: auto;
-  justify-content: center;
-  text-align: center;
+$door: Url("./images/doorTemp.jpg");
+
+.leftWing {
+  background-image: $door;
+  background-size: cover;
+  left: 0vw;
 }
 
-h4 {
-  margin: 0;
+.rightWing {
+  background-image: $door;
+  background-size: cover;
+  right: 0vw;
 }
 
-a {
-  $link-shadow-color: white;
-  color: rgb(145, 74, 212);
-  text-shadow: (-$shadow-size) 0 $link-shadow-color,
-    0 $shadow-size $link-shadow-color, $shadow-size 0 $link-shadow-color,
-    0 (-$shadow-size) $link-shadow-color;
-  text-decoration: none;
+$bezier: cubic-bezier(0.57, 0.21, 0.27, 0.91);
+//$bezier: cubic-bezier(0.31, 1.04, 1, 0.82);
+$doorTiming: 12 * $animationTick;
+
+.leftOpen {
+  left: -50vw !important;
+  transition: left $doorTiming;
+  transition-timing-function: $bezier;
+}
+.leftClose {
+  left: 0vw !important;
+  transition: left $doorTiming;
+  transition-timing-function: $bezier;
+}
+.rightOpen {
+  right: -50vw !important;
+  transition: right $doorTiming;
+  transition-timing-function: $bezier;
+}
+.rightClose {
+  right: 0vw !important;
+  transition: right $doorTiming;
+  transition-timing-function: $bezier;
 }
 
-a#hideLink {
-  color: $text-color;
-  text-shadow: (-$shadow-size) 0 $shadow-color, 0 $shadow-size $shadow-color,
-    $shadow-size 0 $shadow-color, 0 (-$shadow-size) $shadow-color;
+#steam1,
+#steam2,
+#steam3 {
+  background-image: url("./images/steamBurstTemp.png");
+  background-size: cover;
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  opacity: 0;
+  z-index: 9001;
 }
 
-//scrollbar
+#steam1 {
+  left: 60vw;
+  top: 15vh;
+}
+
+#steam2 {
+  rotate: 180deg;
+  top: 30vh;
+  right: 60vw;
+}
+
+#steam3 {
+  left: 60vw;
+  top: 70vh;
+}
+
+$burstDuration: 8 * $animationTick;
+
+.steam1Burst,
+.steam2Burst,
+.steam3Burst {
+  opacity: 1 !important;
+  transform: scale(2, 0.7) !important;
+  transition: transform $burstDuration, opacity $burstDuration ease-in;
+}
+
+$fadingDuration: 20 * $animationTick;
+
+.steam1FadingAway,
+.steam2FadingAway,
+.steam3FadingAway {
+  opacity: 0 !important;
+  transform: scale(2.2, 0.8) !important;
+  transition: transform $fadingDuration, opacity $fadingDuration ease-in;
+}
+
+/*scrollbar styles*/
 
 /* width */
-::-webkit-scrollbar {
+.main::-webkit-scrollbar {
   width: 0.8rem;
 }
-
 /* Track */
-::-webkit-scrollbar-track {
-  background: rgb(34, 0, 73);
+.main::-webkit-scrollbar-track {
+  background: rgb(3, 65, 83);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
-
 /* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(119, 0, 255);
+.main::-webkit-scrollbar-thumb {
+  background: rgb(102, 122, 10);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+/* Handle on hover */
+.main::-webkit-scrollbar-thumb:hover {
+  background: rgb(75, 90, 8);
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(98, 0, 209);
+/*Responsiveness*/
+
+@media (max-width: 1200px) {
+  .main {
+    width: 60%;
+  }
+  .glass_background#head {
+    width: auto;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 900px) {
+  .glass_background {
+    font-size: medium;
+  }
+  .glass_background#head {
+    width: auto;
+    font-size: medium;
+    margin-top: 0px;
+  }
+  .glass_background#title {
+    font-size: larger;
+  }
+  a.links {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  #head {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+  }
+  #title {
+    width: 5rem;
+  }
 }
