@@ -243,7 +243,7 @@ $burstDuration: 8 * $animationTick;
   transition: transform $burstDuration, opacity $burstDuration ease-in;
 }
 
-$fadingDuration: 20 * $animationTick;
+$fadingDuration: 15 * $animationTick;
 
 .steam1FadingAway,
 .steam2FadingAway,

@@ -92,6 +92,7 @@ function App() {
       steamArray.map((val, key) => {
         key += 1;
         val.classList.add("steam" + key + "Burst");
+        console.log(1);
         return 0;
       });
     } else if (state === "opening") {
@@ -103,7 +104,7 @@ function App() {
       });
       setTimeout(function () {
         animateSteam("opened");
-      }, 30 * animationTick);
+      }, 15 * animationTick);
     } else {
       steamArray.map((val, key) => {
         key += 1;
